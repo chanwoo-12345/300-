@@ -258,3 +258,32 @@ button:active {
 body, p, h1, h2, label {
   word-break: keep-all;
 }
+
+/* 1. 아이폰 PWA 터치 지연 제거 및 조각 전용 설정 */
+.piece {
+  /* 아이폰에서 터치 즉시 반응하게 함 */
+  touch-action: none !important;
+  /* 애니메이션 성능 최적화 */
+  will-change: transform, filter;
+  /* 커서 모양 유지 */
+  cursor: pointer;
+}
+
+/* 2. '쏙 들어가는 느낌'을 위한 핵심 효과 */
+.piece:active {
+  /* 0.95는 너무 많이 작아지므로 0.97이 가장 적당합니다. */
+  transform: scale(0.97) !important;
+  /* brightness 대신 그림자를 써야 깊이감이 생깁니다. */
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3)) !important;
+  /* 반응 속도를 0.05초로 극단적으로 줄여서 쫀득함을 줍니다. */
+  transition: transform 0.05s ease-out !important;
+  transform-origin: center !important;
+}
+
+/* 3. 시스템 방해 요소 차단 */
+#puzzle-svg {
+  /* 길게 눌렀을 때 사진 저장 메뉴 뜨는 것 방지 */
+  -webkit-touch-callout: none !important;
+  /* 클릭 시 생기는 회색 하이라이트 제거 */
+  -webkit-tap-highlight-color: transparent !important;
+}
