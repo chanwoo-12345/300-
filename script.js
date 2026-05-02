@@ -111,6 +111,9 @@ function createPuzzle() {
 
       group.appendChild(photo); group.appendChild(fill); group.appendChild(outline);
       group.addEventListener("click", () => openQuiz(i));
+      // 추가할 코드: 아이폰이 :active 상태를 인식하도록 빈 리스너 등록
+      group.addEventListener("touchstart", () => {}, {passive: true});
+      group.addEventListener("touchend", () => {}, {passive: true});
       puzzleSvg.appendChild(group);
     }
   }
