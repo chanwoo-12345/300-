@@ -148,7 +148,7 @@ function checkAnswer(optionIndex) {
     livesText.textContent = "남은 기회  " + "💙 ".repeat(lives) + "🤍 ".repeat(3 - lives);
     wrongText.textContent = `우!!! 기회가 ${lives}번 남았어`;
     if (lives <= 0) {
-      alert("우... 기회를 모두 사용했어 ㅠㅠ.. 처음부터 다시 시작할게.");
+      alert("우... 기회를 모두 사용했어 ㅠㅠ.. <br>처음부터 다시 시작할게.");
       resetPuzzle();
     }
   }
