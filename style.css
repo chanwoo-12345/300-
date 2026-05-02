@@ -258,3 +258,26 @@ button:active {
 body, p, h1, h2, label {
   word-break: keep-all;
 }
+
+/* 1. 아이폰 PWA에서 터치 지연(300ms)을 완전히 없애서 즉각적인 반응 만들기 */
+.puzzle-wrap {
+  touch-action: none !important;
+}
+
+/* 2. 기존 코드를 보강해서 '쏙 들어가는 느낌' 확실히 주기 */
+.piece:active {
+  /* 기존 0.95보다 조금 더 자연스럽게 눌리는 0.97 추천 */
+  transform: scale(0.97) !important; 
+  /* 조각이 바닥에 붙는 듯한 그림자 효과 (쏙 들어가는 느낌의 핵심) */
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) !important;
+  /* 반응 속도를 0.1s에서 0.05s로 줄여서 훨씬 쫀득하게 */
+  transition: transform 0.05s ease-out !important;
+  /* 조각 중앙을 기준으로 작아지게 고정 */
+  transform-origin: center !important;
+}
+
+/* 3. 아이폰 사파리 특유의 클릭 방해 요소들 제거 */
+#puzzle-svg, .piece {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+}
